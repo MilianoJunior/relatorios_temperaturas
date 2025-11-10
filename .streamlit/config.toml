@@ -1,0 +1,7 @@
+[theme]
+# Configuração do tema claro
+primaryColor = "#007bff"
+backgroundColor = "#ffffff"
+secondaryBackgroundColor = "#f8f9fa"
+textColor = "#262730"
+font = "sans serif"

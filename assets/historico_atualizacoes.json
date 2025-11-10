@@ -1,0 +1,101 @@
+[
+  {
+    "usina": "CGH-PICADAS-ALTAS",
+    "ug": "UG-02",
+    "periodo": "Últimos 90 dias",
+    "data_atualizacao": "2025-11-10 11:45:30",
+    "num_registros": 127486,
+    "arquivo_csv": "assets/picadas_altas/picadas_altas_ug02_2025-11-10_11-45.csv"
+  },
+  {
+    "usina": "CGH-PICADAS-ALTAS",
+    "ug": "UG-01",
+    "periodo": "Últimos 90 dias",
+    "data_atualizacao": "2025-11-10 11:15:49",
+    "num_registros": 127486,
+    "arquivo_csv": "assets/picadas_altas/picadas_altas_ug01_2025-11-10_11-15.csv"
+  },
+  {
+    "usina": "CGH-PICADAS_ALTAS",
+    "ug": "UG-02",
+    "periodo": "Últimos 90 dias",
+    "data_atualizacao": "2025-11-10 08:36:21",
+    "num_registros": 127486,
+    "arquivo_csv": "assets/picadas_altas/picadas_altas_ug02_2025-11-10_08-36.csv"
+  },
+  {
+    "usina": "CGH-PICADAS_ALTAS",
+    "ug": "UG-01",
+    "periodo": "Últimos 90 dias",
+    "data_atualizacao": "2025-11-10 08:34:14",
+    "num_registros": 127486,
+    "arquivo_csv": "assets/picadas_altas/picadas_altas_ug01_2025-11-10_08-33.csv"
+  },
+  {
+    "usina": "PCH-PEDRAS",
+    "ug": "UG-01",
+    "periodo": "Últimos 90 dias",
+    "data_atualizacao": "2025-11-07 15:15:19",
+    "num_registros": 212003,
+    "arquivo_csv": "assets/pedras/pedras_ug01_2025-11-07_15-14.csv"
+  },
+  {
+    "usina": "PCH-PEDRAS",
+    "ug": "UG-02",
+    "periodo": "Últimos 90 dias",
+    "data_atualizacao": "2025-11-07 14:53:35",
+    "num_registros": 37570,
+    "arquivo_csv": "assets/pedras/pedras_ug02_2025-11-07_14-53.csv"
+  },
+  {
+    "usina": "PCH-PEDRAS",
+    "ug": "UG-01",
+    "periodo": "Últimos 7 dias",
+    "data_atualizacao": "2025-11-07 12:48:18",
+    "num_registros": 18930,
+    "arquivo_csv": "assets/pedras/pedras_ug01_2025-11-07_12-48.csv"
+  },
+  {
+    "usina": "PCH-PEDRAS",
+    "ug": "UG-01",
+    "periodo": "Últimos 7 dias",
+    "data_atualizacao": "2025-11-07 12:42:23",
+    "num_registros": 18930,
+    "arquivo_csv": "assets/pedras/pedras_ug01_2025-11-07_12-42.csv"
+  },
+  {
+    "usina": "CGH-APARECIDA",
+    "ug": "UG-01",
+    "periodo": "Últimos 90 dias",
+    "data_atualizacao": "2025-11-07 10:58:44",
+    "num_registros": 130140
+  },
+  {
+    "usina": "CGH-FAE",
+    "ug": "UG-02",
+    "periodo": "Últimos 90 dias",
+    "data_atualizacao": "2025-11-07 10:56:31",
+    "num_registros": 129573
+  },
+  {
+    "usina": "CGH-FAE",
+    "ug": "UG-01",
+    "periodo": "Últimos 90 dias",
+    "data_atualizacao": "2025-11-07 10:55:52",
+    "num_registros": 129573
+  },
+  {
+    "usina": "CGH-HOPPEN",
+    "ug": "UG-02",
+    "periodo": "Últimos 90 dias",
+    "data_atualizacao": "2025-11-07 10:55:14",
+    "num_registros": 54563
+  },
+  {
+    "usina": "CGH-HOPPEN",
+    "ug": "UG-01",
+    "periodo": "Últimos 90 dias",
+    "data_atualizacao": "2025-11-07 10:54:56",
+    "num_registros": 24087
+  }
+]
