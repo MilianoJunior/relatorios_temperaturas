@@ -2,6 +2,174 @@
   {
     "usina": "CGH-PICADAS-ALTAS",
     "ug": "UG-02",
+    "periodo": "Últimos 30 dias",
+    "data_atualizacao": "2025-12-08 18:42:44",
+    "num_registros": 40828,
+    "arquivo_csv": "assets/picadas_altas/picadas_altas_ug02_2025-12-08_18-42.csv"
+  },
+  {
+    "usina": "CGH-PICADAS-ALTAS",
+    "ug": "UG-01",
+    "periodo": "Últimos 30 dias",
+    "data_atualizacao": "2025-12-08 18:36:26",
+    "num_registros": 40828,
+    "arquivo_csv": "assets/picadas_altas/picadas_altas_ug01_2025-12-08_18-36.csv"
+  },
+  {
+    "usina": "CGH-PICADAS-ALTAS",
+    "ug": "UG-01",
+    "periodo": "Últimos 30 dias",
+    "data_atualizacao": "2025-11-27 06:28:05",
+    "num_registros": 40586,
+    "arquivo_csv": "assets/picadas_altas/picadas_altas_ug01_2025-11-27_06-27.csv"
+  },
+  {
+    "usina": "CGH-APARECIDA",
+    "ug": "UG-01",
+    "periodo": "Últimos 7 dias",
+    "data_atualizacao": "2025-11-21 15:59:42",
+    "num_registros": 10081,
+    "arquivo_csv": "assets/aparecida/aparecida_ug01_2025-11-21_15-59.csv"
+  },
+  {
+    "usina": "CGH-FAE",
+    "ug": "UG-02",
+    "periodo": "Últimos 7 dias",
+    "data_atualizacao": "2025-11-21 15:56:07",
+    "num_registros": 9841,
+    "arquivo_csv": "assets/fae/fae_ug02_2025-11-21_15-55.csv"
+  },
+  {
+    "usina": "CGH-FAE",
+    "ug": "UG-01",
+    "periodo": "Últimos 7 dias",
+    "data_atualizacao": "2025-11-21 15:52:17",
+    "num_registros": 9841,
+    "arquivo_csv": "assets/fae/fae_ug01_2025-11-21_15-52.csv"
+  },
+  {
+    "usina": "CGH-PICADAS-ALTAS",
+    "ug": "UG-02",
+    "periodo": "Últimos 7 dias",
+    "data_atualizacao": "2025-11-21 15:46:53",
+    "num_registros": 7809,
+    "arquivo_csv": "assets/picadas_altas/picadas_altas_ug02_2025-11-21_15-46.csv"
+  },
+  {
+    "usina": "CGH-PICADAS-ALTAS",
+    "ug": "UG-01",
+    "periodo": "Últimos 7 dias",
+    "data_atualizacao": "2025-11-21 15:40:57",
+    "num_registros": 7809,
+    "arquivo_csv": "assets/picadas_altas/picadas_altas_ug01_2025-11-21_15-40.csv"
+  },
+  {
+    "usina": "PCH-PEDRAS",
+    "ug": "UG-01",
+    "periodo": "Últimos 7 dias",
+    "data_atualizacao": "2025-11-21 15:35:11",
+    "num_registros": 18040,
+    "arquivo_csv": "assets/pedras/pedras_ug01_2025-11-21_15-35.csv"
+  },
+  {
+    "usina": "CGH-HOPPEN",
+    "ug": "UG-02",
+    "periodo": "Últimos 7 dias",
+    "data_atualizacao": "2025-11-21 15:28:59",
+    "num_registros": 4316,
+    "arquivo_csv": "assets/hoppen/hoppen_ug02_2025-11-21_15-28.csv"
+  },
+  {
+    "usina": "CGH-HOPPEN",
+    "ug": "UG-01",
+    "periodo": "Últimos 7 dias",
+    "data_atualizacao": "2025-11-21 15:24:24",
+    "num_registros": 9615,
+    "arquivo_csv": "assets/hoppen/hoppen_ug01_2025-11-21_15-24.csv"
+  },
+  {
+    "usina": "CGH-HOPPEN",
+    "ug": "UG-01",
+    "periodo": "Últimos 7 dias",
+    "data_atualizacao": "2025-11-13 13:41:04",
+    "num_registros": 9633,
+    "arquivo_csv": "assets/hoppen/hoppen_ug01_2025-11-13_13-40.csv"
+  },
+  {
+    "usina": "CGH-APARECIDA",
+    "ug": "UG-01",
+    "periodo": "Últimos 30 dias",
+    "data_atualizacao": "2025-11-11 16:10:35",
+    "num_registros": 43328,
+    "arquivo_csv": "assets/aparecida/aparecida_ug01_2025-11-11_16-10.csv"
+  },
+  {
+    "usina": "CGH-HOPPEN",
+    "ug": "UG-02",
+    "periodo": "Últimos 30 dias",
+    "data_atualizacao": "2025-11-11 16:02:04",
+    "num_registros": 17283,
+    "arquivo_csv": "assets/hoppen/hoppen_ug02_2025-11-11_16-01.csv"
+  },
+  {
+    "usina": "CGH-HOPPEN",
+    "ug": "UG-01",
+    "periodo": "Últimos 30 dias",
+    "data_atualizacao": "2025-11-11 15:34:27",
+    "num_registros": 41213,
+    "arquivo_csv": "assets/hoppen/hoppen_ug01_2025-11-11_15-34.csv"
+  },
+  {
+    "usina": "CGH-FAE",
+    "ug": "UG-02",
+    "periodo": "Últimos 30 dias",
+    "data_atualizacao": "2025-11-11 15:29:10",
+    "num_registros": 43300,
+    "arquivo_csv": "assets/fae/fae_ug02_2025-11-11_15-29.csv"
+  },
+  {
+    "usina": "CGH-FAE",
+    "ug": "UG-01",
+    "periodo": "Últimos 30 dias",
+    "data_atualizacao": "2025-11-11 15:25:06",
+    "num_registros": 43300,
+    "arquivo_csv": "assets/fae/fae_ug01_2025-11-11_15-24.csv"
+  },
+  {
+    "usina": "PCH-PEDRAS",
+    "ug": "UG-02",
+    "periodo": "Últimos 30 dias",
+    "data_atualizacao": "2025-11-11 14:47:50",
+    "num_registros": 18750,
+    "arquivo_csv": "assets/pedras/pedras_ug02_2025-11-11_14-47.csv"
+  },
+  {
+    "usina": "PCH-PEDRAS",
+    "ug": "UG-01",
+    "periodo": "Últimos 30 dias",
+    "data_atualizacao": "2025-11-11 14:43:43",
+    "num_registros": 75193,
+    "arquivo_csv": "assets/pedras/pedras_ug01_2025-11-11_14-43.csv"
+  },
+  {
+    "usina": "CGH-PICADAS-ALTAS",
+    "ug": "UG-02",
+    "periodo": "Últimos 30 dias",
+    "data_atualizacao": "2025-11-11 14:26:45",
+    "num_registros": 42837,
+    "arquivo_csv": "assets/picadas_altas/picadas_altas_ug02_2025-11-11_14-26.csv"
+  },
+  {
+    "usina": "CGH-PICADAS-ALTAS",
+    "ug": "UG-01",
+    "periodo": "Últimos 30 dias",
+    "data_atualizacao": "2025-11-11 14:21:36",
+    "num_registros": 42837,
+    "arquivo_csv": "assets/picadas_altas/picadas_altas_ug01_2025-11-11_14-21.csv"
+  },
+  {
+    "usina": "CGH-PICADAS-ALTAS",
+    "ug": "UG-02",
     "periodo": "Últimos 90 dias",
     "data_atualizacao": "2025-11-10 11:45:30",
     "num_registros": 127486,

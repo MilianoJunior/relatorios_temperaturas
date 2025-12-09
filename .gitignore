@@ -52,3 +52,6 @@ Thumbs.db
 *.bak
 *.cache
 
+# Dados de temperatura (CSV)
+assets/**/*.csv
+
