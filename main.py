@@ -23,6 +23,28 @@ from libs.configs import leituras
 # Aplicar estilos CSS
 st.markdown(styles, unsafe_allow_html=True)
 
+USINAS_COLUNAS = {
+    'CGH-HOPPEN': {
+        'UG-01': ['temp_enrol_fase_A', 'temp_enrol_fase_B', 'temp_enrol_fase_C', 'temp_nucleo', 'temp_vedacao_eixo_lna', 'temp_vedacao_eixo_la', 'temp_manc_esc_comb', 'temp_manc_rad_comb', 'temp_cont_esc_manc_comb', 'temp_manc_rad_guia', 'temp_manc_rad_comb_la', 'temp_manc_rad_comb_lna', 'temp_oleo_UHRV', 'temp_oleo_UHLM', 'temp_CSU1', 'potencia_ativa'],
+        'UG-02': ['temp_enrol_fase_A', 'temp_enrol_fase_B', 'temp_enrol_fase_C', 'temp_nucleo', 'temp_vedacao_eixo_lna', 'temp_vedacao_eixo_la', 'temp_manc_esc_comb', 'temp_manc_rad_comb', 'temp_cont_esc_manc_comb', 'temp_manc_rad_guia', 'temp_manc_rad_comb_la', 'temp_manc_rad_comb_lna', 'temp_oleo_UHRV', 'temp_oleo_UHLM', 'temp_CSU1', 'potencia_ativa'],
+    },
+    'CGH-FAE': {
+        'UG-01': ['ug01_enrol_faseA', 'ug01_enrol_faseB', 'ug01_enrol_faseC', 'ug01_nucleo_estator', 'ug01_cssu1', 'ug01_mancal_guia', 'ug01_mancal_combinado', 'ug01_mancal_escora', 'ug01_temp_oleo_UHRV', 'ug01_temp_oleo_UHLM', 'ug01_engeEX', 'ug01_pot_ativa'],
+        'UG-02': ['ug02_enrol_faseA', 'ug02_enrol_faseB', 'ug02_enrol_faseC', 'ug02_nucleo_estator', 'ug02_cssu1', 'ug02_mancal_guia', 'ug02_mancal_combinado', 'ug02_mancal_escora', 'ug02_temp_oleo_UHRV', 'ug02_temp_oleo_UHLM', 'ug02_engeEX', 'ug02_pot_ativa'],
+    },
+    'CGH-APARECIDA': {
+        'UG-01': ['temp_uhlm_oleo', 'temp_uhrv_oleo', 'temp_manc_casq_comb', 'temp_manc_casq_esc', 'temp_enrol_A', 'temp_enrol_B', 'temp_enrol_C', 'temp_nucleo_estator_01', 'temp_nucleo_estator_02', 'temp_nucleo_estator_03', 'temp_tiristor_01', 'temp_tiristor_02', 'temp_tiristor_03', 'temp_crowbar_01', 'temp_crowbar_02', 'temp_transf_excitacao', 'temp_casq_rad_comb', 'temp_mancal_casq_guia', 'temp_mancal_cont_esc', 'potencia_ativa'],
+    },
+    'CGH-PICADAS-ALTAS': {
+        'UG-01': ['ug01 enrolamento fase A', 'ug01 enrolamento fase B', 'ug01 enrolamento fase C', 'ug01 nucleo do estator', 'ug01 CS-U1', 'ug01 Mancal Combinado Radial L.A', 'ug01 Mancal Combinado Escora L.A', 'ug01 Mancal Combinado Contra Escora L.A', 'ug01 Mancal Guia L.N.A.', 'ug01 Óleo Reservatório - U.H.L.M*', 'ug01 Potência Ativa', 'Temperatura Ambiente'],
+        'UG-02': ['ug02 enrolamento fase A', 'ug02 enrolamento fase B', 'ug02 enrolamento fase C', 'ug02 nucleo do estator', 'ug02 CS-U1', 'ug02 Mancal Combinado Radial L.A', 'ug02 Mancal Combinado Escora L.A', 'ug02 Mancal Combinado Contra Escora L.A', 'ug02 Mancal Guia L.N.A.', 'ug02 Óleo Reservatório - U.H.L.M*', 'ug02 Potência Ativa', 'Temperatura Ambiente'],
+    },
+    'PCH-PEDRAS': {
+        'UG-01': ['enrol_fase_a', 'enrol_fase_b', 'enrol_fase_c', 'manc_la_guia', 'manc_lna_guia', 'manc_lna_esc', 'bucha_rad_01', 'bucha_rad_02', 'gaxet_01', 'gaxet_02', 'gaxet_03', 'uhlm_temp_oleo', 'uhrv_temp_oleo', 'pot_ativa'],
+        'UG-02': ['enrol_fase_a', 'enrol_fase_b', 'enrol_fase_c', 'manc_la_guia', 'manc_lna_guia', 'manc_lna_esc', 'bucha_rad_01', 'bucha_rad_02', 'gaxet_01', 'gaxet_02', 'gaxet_03', 'uhlm_temp_oleo', 'uhrv_temp_oleo', 'pot_ativa'],
+    },
+}
+
 def registrar_atualizacao(usina, ug, periodo, num_registros, arquivo_csv):
     """Registra a última atualização em um arquivo JSON"""
     import json
@@ -127,23 +149,50 @@ def carregar_dados(usina, ug, periodo_dias=None):
     # colunas = ['data_hora']
     usinas = {
         'CGH-HOPPEN':{
-            'UG-01': {'csv': f'assets/hoppen/hoppen_ug01_{data_hora_atual}.csv', 'nome': 'UG-01','mysql': f'select * from cgh_hoppen_ug01 where data_hora <= "{data_atual}"{condicao_data}'},
-            'UG-02': {'csv': f'assets/hoppen/hoppen_ug02_{data_hora_atual}.csv', 'nome': 'UG-02','mysql': f'select * from cgh_hoppen_ug02 where data_hora <= "{data_atual}"{condicao_data}'},
+            'UG-01': {
+                'csv': f'assets/hoppen/hoppen_ug01_{data_hora_atual}.csv', 'nome': 'UG-01','mysql': f'select * from cgh_hoppen_ug01 where data_hora <= "{data_atual}"{condicao_data}',
+                'colunas': ['temp_enrol_fase_A', 'temp_enrol_fase_B', 'temp_enrol_fase_C', 'temp_nucleo', 'temp_vedacao_eixo_lna', 'temp_vedacao_eixo_la', 'temp_manc_esc_comb', 'temp_manc_rad_comb', 'temp_cont_esc_manc_comb', 'temp_manc_rad_guia', 'temp_manc_rad_comb_la', 'temp_manc_rad_comb_lna', 'temp_oleo_UHRV', 'temp_oleo_UHLM', 'temp_CSU1', 'potencia_ativa']
+            },
+            'UG-02': {
+                'csv': f'assets/hoppen/hoppen_ug02_{data_hora_atual}.csv', 'nome': 'UG-02','mysql': f'select * from cgh_hoppen_ug02 where data_hora <= "{data_atual}"{condicao_data}',
+                'colunas': ['temp_enrol_fase_A', 'temp_enrol_fase_B', 'temp_enrol_fase_C', 'temp_nucleo', 'temp_vedacao_eixo_lna', 'temp_vedacao_eixo_la', 'temp_manc_esc_comb', 'temp_manc_rad_comb', 'temp_cont_esc_manc_comb', 'temp_manc_rad_guia', 'temp_manc_rad_comb_la', 'temp_manc_rad_comb_lna', 'temp_oleo_UHRV', 'temp_oleo_UHLM', 'temp_CSU1', 'potencia_ativa']
+            },
         },
         'CGH-FAE':{
-            'UG-01': {'csv': f'assets/fae/fae_ug01_{data_hora_atual}.csv', 'nome': 'UG-01','mysql': f'select * from cgh_fae where data_hora <= "{data_atual}"{condicao_data}'},
-            'UG-02': {'csv': f'assets/fae/fae_ug02_{data_hora_atual}.csv', 'nome': 'UG-02','mysql': f'select * from cgh_fae where data_hora <= "{data_atual}"{condicao_data}'},
+            'UG-01': {
+                'csv': f'assets/fae/fae_ug01_{data_hora_atual}.csv', 'nome': 'UG-01','mysql': f'select * from cgh_fae where data_hora <= "{data_atual}"{condicao_data}',
+                'colunas': ['ug01_enrol_faseA', 'ug01_enrol_faseB', 'ug01_enrol_faseC', 'ug01_nucleo_estator', 'ug01_cssu1', 'ug01_mancal_guia', 'ug01_mancal_combinado', 'ug01_mancal_escora', 'ug01_temp_oleo_UHRV', 'ug01_temp_oleo_UHLM', 'ug01_engeEX', 'ug01_pot_ativa']
+            },
+            'UG-02': {
+                'csv': f'assets/fae/fae_ug02_{data_hora_atual}.csv', 'nome': 'UG-02','mysql': f'select * from cgh_fae where data_hora <= "{data_atual}"{condicao_data}',
+                'colunas': ['ug02_enrol_faseA', 'ug02_enrol_faseB', 'ug02_enrol_faseC', 'ug02_nucleo_estator', 'ug02_cssu1', 'ug02_mancal_guia', 'ug02_mancal_combinado', 'ug02_mancal_escora', 'ug02_temp_oleo_UHRV', 'ug02_temp_oleo_UHLM', 'ug02_engeEX', 'ug02_pot_ativa']
+            },
         },
         'CGH-APARECIDA':{
-            'UG-01': {'csv': f'assets/aparecida/aparecida_ug01_{data_hora_atual}.csv', 'nome': 'UG-01','mysql': f'select * from cgh_aparecida where data_hora <= "{data_atual}"{condicao_data}'},
+            'UG-01': {
+                'csv': f'assets/aparecida/aparecida_ug01_{data_hora_atual}.csv', 'nome': 'UG-01','mysql': f'select * from cgh_aparecida where data_hora <= "{data_atual}"{condicao_data}',
+                'colunas': ['temp_uhlm_oleo', 'temp_uhrv_oleo', 'temp_manc_casq_comb', 'temp_manc_casq_esc', 'temp_enrol_A', 'temp_enrol_B', 'temp_enrol_C', 'temp_nucleo_estator_01', 'temp_nucleo_estator_02', 'temp_nucleo_estator_03', 'temp_tiristor_01', 'temp_tiristor_02', 'temp_tiristor_03', 'temp_crowbar_01', 'temp_crowbar_02', 'temp_transf_excitacao', 'temp_casq_rad_comb', 'temp_mancal_casq_guia', 'temp_mancal_cont_esc', 'potencia_ativa']
+            },
         },
         'CGH-PICADAS-ALTAS':{
-            'UG-01': {'csv': f'assets/picadas_altas/picadas_altas_ug01_{data_hora_atual}.csv', 'nome': 'UG-01','mysql': f'select * from cgh_picadas_altas where data_hora <= "{data_atual}"{condicao_data}'},
-            'UG-02': {'csv': f'assets/picadas_altas/picadas_altas_ug02_{data_hora_atual}.csv', 'nome': 'UG-02','mysql': f'select * from cgh_picadas_altas where data_hora <= "{data_atual}"{condicao_data}'},
+            'UG-01': {
+                'csv': f'assets/picadas_altas/picadas_altas_ug01_{data_hora_atual}.csv', 'nome': 'UG-01','mysql': f'select * from cgh_picadas_altas where data_hora <= "{data_atual}"{condicao_data}',
+                'colunas': ['ug01 enrolamento fase A', 'ug01 enrolamento fase B', 'ug01 enrolamento fase C', 'ug01 nucleo do estator', 'ug01 CS-U1', 'ug01 Mancal Combinado Radial L.A', 'ug01 Mancal Combinado Escora L.A', 'ug01 Mancal Combinado Contra Escora L.A', 'ug01 Mancal Guia L.N.A.', 'ug01 Óleo Reservatório - U.H.L.M*', 'ug01 Potência Ativa','Temperatura Ambiente']
+            },
+            'UG-02': {
+                'csv': f'assets/picadas_altas/picadas_altas_ug02_{data_hora_atual}.csv', 'nome': 'UG-02','mysql': f'select * from cgh_picadas_altas where data_hora <= "{data_atual}"{condicao_data}',
+                'colunas':['ug02 enrolamento fase A', 'ug02 enrolamento fase B', 'ug02 enrolamento fase C', 'ug02 nucleo do estator', 'ug02 CS-U1', 'ug02 Mancal Combinado Radial L.A', 'ug02 Mancal Combinado Escora L.A', 'ug02 Mancal Combinado Contra Escora L.A', 'ug02 Mancal Guia L.N.A.', 'ug02 Óleo Reservatório - U.H.L.M*', 'ug02 Potência Ativa', 'Temperatura Ambiente']
+            },
         },
         'PCH-PEDRAS':{
-            'UG-01': {'csv': f'assets/pedras/pedras_ug01_{data_hora_atual}.csv', 'nome': 'UG-01','mysql': f'select * from pch_pedras_ug01 where data_hora <= "{data_atual}"{condicao_data}'},
-            'UG-02': {'csv': f'assets/pedras/pedras_ug02_{data_hora_atual}.csv', 'nome': 'UG-02','mysql': f'select * from pch_pedras_ug02 where data_hora <= "{data_atual}"{condicao_data}'},
+            'UG-01': {
+                'csv': f'assets/pedras/pedras_ug01_{data_hora_atual}.csv', 'nome': 'UG-01','mysql': f'select * from pch_pedras_ug01 where data_hora <= "{data_atual}"{condicao_data}',
+                'colunas': ['enrol_fase_a', 'enrol_fase_b', 'enrol_fase_c', 'manc_la_guia', 'manc_lna_guia', 'manc_lna_esc', 'bucha_rad_01', 'bucha_rad_02', 'gaxet_01', 'gaxet_02', 'gaxet_03', 'uhlm_temp_oleo', 'uhrv_temp_oleo', 'pot_ativa']
+            },
+            'UG-02': {
+                'csv': f'assets/pedras/pedras_ug02_{data_hora_atual}.csv', 'nome': 'UG-02','mysql': f'select * from pch_pedras_ug02 where data_hora <= "{data_atual}"{condicao_data}',
+                'colunas': ['enrol_fase_a', 'enrol_fase_b', 'enrol_fase_c', 'manc_la_guia', 'manc_lna_guia', 'manc_lna_esc', 'bucha_rad_01', 'bucha_rad_02', 'gaxet_01', 'gaxet_02', 'gaxet_03', 'uhlm_temp_oleo', 'uhrv_temp_oleo', 'pot_ativa']
+            },
         },
     }
     def verificar_csv(csv):
@@ -233,7 +282,7 @@ def renomear_colunas_picadas_altas(df):
 
 # Chamar a função principal
 if __name__ == "__main__":
-    usinas = ['CGH-HOPPEN', 'CGH-FAE', 'CGH-APARECIDA', 'CGH-PICADAS-ALTAS', 'PCH-PEDRAS']
+    usinas_opcoes = list(USINAS_COLUNAS.keys())
     
     # Inicializar session_state
     if 'registro_selecionado_idx' not in st.session_state:
@@ -247,7 +296,7 @@ if __name__ == "__main__":
         cols = st.columns(3)
         
         with cols[0]:
-            usina_selecionada = st.selectbox('Selecione a Usina', usinas)
+            usina_selecionada = st.selectbox('Selecione a Usina', usinas_opcoes)
         
         with cols[1]:
             unidade_geradora = st.selectbox('Selecione a Unidade Geradora', ['UG-01', 'UG-02'])
@@ -317,11 +366,14 @@ if __name__ == "__main__":
             
             # Obter o registro selecionado
             registro_selecionado = df_historico.iloc[registro_selecionado_idx]
-            
+
             st.markdown("---")
+            st.markdown("### 📄 Geração de Relatório")
             
-            # === CARD 3: Seleção de colunas ===
-            st.markdown("### 📊 Seleção de Colunas para o Relatório")
+            # st.markdown("---")
+            
+            # # === CARD 3: Seleção de colunas ===
+            # st.markdown("### 📊 Seleção de Colunas para o Relatório")
             
             # Verificar se o registro tem o campo arquivo_csv válido
             # Checar se existe, não é None, não é string vazia e não é NaN (float)
@@ -364,18 +416,29 @@ if __name__ == "__main__":
                     potencia_name = [col for col in df_temp.columns if 'ativa' in col.lower()]
                     
                     st.markdown(f"**Usina:** {registro_selecionado['usina']} | **UG:** {registro_selecionado['ug']}")
-                    st.markdown(f"**Total de colunas disponíveis:** {len(colunas_disponiveis)}")
+                    # st.markdown(f"**Total de colunas disponíveis:** {len(colunas_disponiveis)}")
                     
                     # Multiselect para escolher colunas
-                    colunas_selecionadas = st.multiselect(
-                        "Selecione as colunas que deseja incluir no relatório:",
-                        options=colunas_disponiveis,
-                        default=colunas_temp_default if colunas_temp_default else colunas_disponiveis[:10],
-                        key='multiselect_colunas'
+                    # colunas_selecionadas = st.multiselect(
+                    #     "Selecione as colunas que deseja incluir no relatório:",
+                    #     options=colunas_disponiveis,
+                    #     default=colunas_temp_default if colunas_temp_default else colunas_disponiveis[:10],
+                    #     key='multiselect_colunas'
+                    # )
+                    colunas_selecionadas = USINAS_COLUNAS.get(
+                        registro_selecionado['usina'],
+                        {}
+                    ).get(
+                        registro_selecionado['ug'],
+                        colunas_temp_default if colunas_temp_default else colunas_disponiveis
                     )
-
+                    # st.write(colunas_selecionadas)
+                    print(colunas_selecionadas)
                     # Selecionar a potência ativa
-                    potencia_ativa = st.selectbox('Selecione a potência ativa', potencia_name)
+                    # potencia_ativa = st.selectbox('Selecione a potência ativa', potencia_name)
+                    # print('1. ',potencia_ativa)
+                    potencia_ativa = [ col for col in colunas_selecionadas if 'ativa' in col.lower()][0]
+                    # print('2. ',potencia_ativa)
                     
                     # Atualizar session_state
                     st.session_state.colunas_selecionadas = colunas_selecionadas
@@ -387,8 +450,7 @@ if __name__ == "__main__":
                 else:
                     st.error(f"❌ Arquivo CSV não encontrado: {arquivo_csv}")
             
-            st.markdown("---")
-            st.markdown("### 📄 Geração de Relatório")
+            
             
             col1, col2, col3 = st.columns([1, 2, 1])
             
@@ -427,7 +489,7 @@ if __name__ == "__main__":
                     if df is not None:
                         st.success(f"✅ Dados carregados! Total de {len(df):,} registros")
                         colunas_para_relatorio = ['data_hora'] + st.session_state.colunas_selecionadas
-                        df_filtrado = df[colunas_para_relatorio + [potencia_ativa]]
+                        df_filtrado = df[colunas_para_relatorio]
                         
                         # Gerar relatório
                         with st.spinner('📊 Gerando relatório...'):

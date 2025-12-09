@@ -66,9 +66,22 @@ def mapear_nome_coluna_para_sensor(nome_coluna, variaveis_disponiveis):
         r'(gaxeteiro|gaxet)[_\s]*0?3': 'Gaxeteiro 03',
         r'bucha[_\s]*(radial|rad)[_\s]*0?1': 'Bucha Radial O1',
         r'bucha[_\s]*(radial|rad)[_\s]*0?2': 'Bucha Radial O2',
+        r'temp_vedacao_eixo_lna': 'Vedação Eixo L.N.A.',
+        r'temp_vedacao_eixo_la': 'Vedação Eixo L.A.',
     }
+    # print(f"nome_limpo: {nome_limpo}")
+    if nome_limpo == 'vedacao_eixo_lna':
+        return 'Vedação Eixo L.N.A.'
+    if nome_limpo == 'vedacao_eixo_la':
+        return 'Vedação Eixo L.A.'
+    if nome_limpo == 'manc_rad_comb_lna':
+        return 'Mancal Rad. Comb. L.N.A.'
+    if nome_limpo == 'manc_rad_comb_la':
+        return 'Mancal Rad. Comb. L.A.'
     
     for padrao, nomes_sensores in padroes.items():
+        
+        
         if re.search(padrao, nome_limpo, re.IGNORECASE):
             if isinstance(nomes_sensores, str):
                 nomes_sensores = [nomes_sensores]
@@ -237,18 +250,18 @@ def grafico_temperatura(df, col_temp, col_pot, titulo, variaveis):
         row=1, col=1
     )
 
-    # --- Linha de Tendência (Média Móvel) ---
-    fig.add_trace(
-        go.Scatter(
-            x=d["data_hora"], 
-            y=d[col_temp].rolling(window=60).mean(),
-            mode="lines",
-            name="Tendência",
-            line=dict(color="#3c3c3c", width=2, dash="dash"),
-            hovertemplate="<b>%{x}</b><br>Tendência: %{y:.1f}°C<extra></extra>"
-        ),
-        row=1, col=1
-    )
+    # # --- Linha de Tendência (Média Móvel) ---
+    # fig.add_trace(
+    #     go.Scatter(
+    #         x=d["data_hora"], 
+    #         y=d[col_temp].rolling(window=60).mean(),
+    #         mode="lines",
+    #         name="Tendência",
+    #         line=dict(color="#3c3c3c", width=2, dash="dash"),
+    #         hovertemplate="<b>%{x}</b><br>Tendência: %{y:.1f}°C<extra></extra>"
+    #     ),
+    #     row=1, col=1
+    # )
 
     # --- Linhas de Alarme/Trip ---
     if variaveis.get("alarme", 0) > 0:
